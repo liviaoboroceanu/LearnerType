@@ -1,0 +1,135 @@
+/* src/components/Header.css */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 25px; /* Common desktop padding */
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.header-icon {
+  color: #ffffff;
+  fill: #ffffff;
+  font-size: 24px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Desktop navigation links (the 'tabs') */
+.nav-links-desktop {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-text {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Open Sans';
+  line-height: 19px;
+  /* Added for clickable areas in sidebar */
+  cursor: pointer; 
+  white-space: nowrap; /* Prevent wrapping in sidebar */
+}
+
+/* Hamburger Icon - hidden by default on desktop */
+.hamburger-icon {
+  display: none; 
+  cursor: pointer;
+}
+
+/* Sidebar styles - hidden off-screen by default */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start off-screen to the right */
+  width: 250px; /* Width of the sidebar */
+  max-width: 80%; /* Max width relative to viewport */
+  height: 100%;
+  background-color: #333; /* Dark background for sidebar */
+  z-index: 1001; /* Above other content and overlay */
+  transition: right 0.3s ease-in-out; /* Smooth slide animation */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px; /* Space between sidebar elements */
+}
+
+.sidebar.open {
+  right: 0; /* Slide into view */
+}
+
+.close-sidebar {
+  align-self: flex-end; /* Position close button at top right */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 0; /* Remove default button padding */
+}
+
+.sidebar-nav-links {
+  display: flex;
+  flex-direction: column; /* Stack tabs vertically within sidebar */
+  gap: 15px; /* Space between links in sidebar */
+  width: 100%; /* Ensure links take full width of sidebar */
+  align-items: flex-start; /* Align tabs to the start of the sidebar */
+}
+
+/* Overlay that appears when sidebar is open */
+.sidebar-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 1000; /* Below sidebar, above page content */
+}
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 20px;
+    /* Keep it as a row for icon and hamburger */
+    flex-direction: row; 
+    justify-content: space-between; /* Space out icon and hamburger */
+    align-items: center; 
+    position: relative; /* Ensure it stays in flow */
+    display: flex; /* Make sure the header is displayed */
+  }
+
+  .nav-links-desktop {
+    display: none; /* Hide the full navigation links on mobile */
+  }
+
+  .hamburger-icon {
+    display: flex; /* Show the hamburger icon on mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 20px;
+  }
+
+  .hamburger-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white; /* Color of the hamburger lines */
+    border-radius: 1px;
+  }
+
+  /* Show the overlay when sidebar is open on mobile */
+  .sidebar-overlay {
+    display: block; 
+  }
+}

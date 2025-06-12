@@ -1,0 +1,32 @@
+/* src/components/ProgressIndicator.css */
+
+/* Hide progress indicators on desktop by default */
+.progress-indicator-container {
+  display: none; /* Re-added display: none for desktop */
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .progress-indicator-container {
+    display: flex; /* Show progress indicators on mobile */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    justify-content: space-between;
+    gap: 5px;
+    z-index: 10;
+  }
+
+  .progress-card {
+    width: 30px;
+    height: 5px;
+    border-radius: 100px;
+    background-color: #e8e8e8; /* Inactive color */
+    flex-grow: 1; /* Allow cards to grow and fill space */
+  }
+
+  .progress-card.active {
+    background-color: #343434; /* Active color */
+  }
+}
