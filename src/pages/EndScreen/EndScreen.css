@@ -1,0 +1,164 @@
+/* src/pages/EndScreen.css */
+
+.end-screen-container {
+  background-color: #161616;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.end-content-wrapper {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Desktop Styles (Default) */
+.end-screen-image {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 390px;
+  height: 482px;
+  border-radius: 8px;
+  background-image: url(/public/images/laptop/laptop-end-screen.png);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 95%; /* Added max-width for responsiveness */
+}
+
+.instruction-text {
+  position: absolute;
+  top: 694px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'Josefin Sans';
+  line-height: 23px;
+  text-align: center;
+  width: calc(100% - 40px);
+  max-width: 846px;
+}
+
+.email-input {
+  position: absolute;
+  top: 625px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px); /* Changed to responsive width */
+  max-width: 846px; /* Added max-width */
+  height: 46px;
+  padding: 0px 8px;
+  border: 1px solid #343434;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #161616;
+  color: #94a3b8;
+  font-size: 18px;
+  font-family: 'Josefin Sans';
+  line-height: 60px;
+  text-align: center;
+  outline: none;
+}
+
+/* Style for email input error */
+.email-input.input-error {
+  border-color: red;
+  box-shadow: 0 0 5px red;
+}
+
+.email-error-message {
+  position: absolute;
+  top: 675px; /* Position below the input */
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  font-size: 14px;
+  font-family: 'Josefin Sans';
+  text-align: center;
+  width: calc(100% - 40px);
+  max-width: 846px;
+  margin-top: 5px; /* Small margin from input */
+}
+
+
+.show-results-button {
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px); /* Changed to responsive width */
+  max-width: 846px; /* Added max-width */
+  height: 108px;
+  padding: 0px 8px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+  background-color: #cfcf14;
+  color: #000000;
+  font-size: 30px;
+  font-family: 'Josefin Sans';
+  font-weight: 500;
+  line-height: 39px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+/* Removed user-id-display styles */
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .end-screen-image {
+    top: 81px;
+    width: 301px;
+    height: 373px;
+    max-width: 90%; /* Added max-width for safety */
+  }
+
+  .show-results-button {
+    top: 454px;
+    width: calc(100% - 40px); /* Changed to responsive width */
+    max-width: 375px; /* Limit max width on mobile */
+    height: 56px;
+    font-size: 16px;
+    font-family: 'Roboto';
+    font-weight: 600;
+    line-height: 29px;
+  }
+
+  .email-input {
+    top: 530px;
+    width: calc(100% - 40px); /* Changed to responsive width */
+    max-width: 375px; /* Limit max width on mobile */
+    height: 56px;
+    border-radius: 2px;
+    color: #c0c0c0;
+    font-size: 14px;
+    font-family: 'Roboto Mono';
+    line-height: 18px;
+  }
+
+  .instruction-text {
+    top: 590px;
+    font-size: 14px;
+  }
+
+  .email-error-message {
+    top: 570px; /* Adjust position for mobile */
+    font-size: 12px;
+  }
+
+  /* Removed user-id-display styles for mobile */
+}

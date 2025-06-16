@@ -1,0 +1,88 @@
+/* src/pages/StartScreen.css */
+
+.start-screen-container {
+  background-color: #161616;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.start-screen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Positioning for the Image and Button based on Uizard's output */
+/* These values might need adjustment for responsiveness */
+.start-screen-image {
+  position: absolute;
+  top: 183px;
+  left: 50%; /* Changed from fixed pixel to center */
+  transform: translateX(-50%); /* Added for centering */
+  width: 846px;
+  height: 426px;
+  border-radius: 8px;
+  background-image: url(/public/images/laptop/laptop-start-screen.png);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 95%; /* Added max-width for responsiveness */
+}
+
+.start-screen-button {
+  position: absolute;
+  top: 609px;
+  left: 50%; /* Changed from fixed pixel to center */
+  transform: translateX(-50%); /* Added for centering */
+  width: 846px;
+  height: 108px;
+  font-size: 28px;
+  font-family: 'Helvitica Neue';
+  font-weight: 500;
+  line-height: 36px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0px 8px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+  outline: none;
+  max-width: 95%; /* Added max-width for responsiveness */
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .start-screen-image {
+    top: 25%;
+    width: 95vw;
+    height: 25vh;
+  }
+
+  .start-screen-button {
+    top: 350px;
+    width: calc(100% - 40px); /* Changed to responsive width */
+    max-width: 350px; /* Limit max width on mobile */
+    height: 50px;
+    font-size: 18px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    line-height: 23px;
+  }
+
+  .start-screen-content {
+    padding: 10px;
+    justify-content: flex-start;
+  }
+}
