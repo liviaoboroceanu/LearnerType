@@ -1,9 +1,9 @@
 // src/pages/EndScreen.js
-import React, { useState, useEffect } from 'react'; // Import useEffect
+import React, { useState, useEffect } from 'react';
 import './EndScreen.css';
 import Header from '../../components/Header/Header';
 
-const EndScreen = ({ onShowResults, isLoading, isMobile }) => { // Accept isMobile prop
+const EndScreen = ({ onShowResults, isLoading, isMobile }) => {
   const [email, setEmail] = useState('');
   const [showEmailError, setShowEmailError] = useState(false);
 
@@ -28,7 +28,7 @@ const EndScreen = ({ onShowResults, isLoading, isMobile }) => { // Accept isMobi
       <div className="end-content-wrapper">
         <div
           className="end-screen-image"
-          style={{ backgroundImage: `url(${endScreenImagePath})` }} // Use dynamic path
+          style={{ backgroundImage: `url(${endScreenImagePath})` }}
         ></div>
 
         <button onClick={handleSubmit} className="show-results-button" disabled={isLoading}>
@@ -51,7 +51,8 @@ const EndScreen = ({ onShowResults, isLoading, isMobile }) => { // Accept isMobi
           <p className="email-error-message">Please enter your email address to see your results.</p>
         )}
 
-        <p className="instruction-text">Enter your email to uncover your results!</p>
+        {/* This entire <p> element is removed */}
+        {/* <p className="instruction-text">Enter your email to uncover your results!</p> */}
       </div>
     </div>
   );

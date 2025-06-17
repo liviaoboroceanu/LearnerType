@@ -16,16 +16,16 @@
   width: 100%;
   flex-grow: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding-top: 50px;
+  /* Add padding-bottom to lift the content group up */
+  padding-bottom: 50px; /* Adjust this value as needed */
 }
 
 /* Desktop Styles (Default) */
 .end-screen-image {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
   width: 390px;
   height: 482px;
   border-radius: 8px;
@@ -33,30 +33,13 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  max-width: 95%; /* Added max-width for responsiveness */
-}
-
-.instruction-text {
-  position: absolute;
-  top: 694px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ffffff;
-  font-size: 18px;
-  font-family: 'Josefin Sans';
-  line-height: 23px;
-  text-align: center;
-  width: calc(100% - 40px);
-  max-width: 846px;
+  max-width: 95%;
+  margin-bottom: 0px;
 }
 
 .email-input {
-  position: absolute;
-  top: 625px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 40px); /* Changed to responsive width */
-  max-width: 846px; /* Added max-width */
+  width: calc(100% - 40px);
+  max-width: 846px;
   height: 46px;
   padding: 0px 8px;
   border: 1px solid #343434;
@@ -69,6 +52,8 @@
   line-height: 60px;
   text-align: center;
   outline: none;
+  margin-top: 20px;
+  margin-bottom: 50px; /* Added spacing below the email input for desktop */
 }
 
 /* Style for email input error */
@@ -78,33 +63,22 @@
 }
 
 .email-error-message {
-  position: absolute;
-  top: 675px; /* Position below the input */
-  left: 50%;
-  transform: translateX(-50%);
   color: red;
   font-size: 14px;
   font-family: 'Josefin Sans';
   text-align: center;
   width: calc(100% - 40px);
   max-width: 846px;
-  margin-top: 5px; /* Small margin from input */
+  margin-top: 5px;
 }
 
-
 .show-results-button {
-  position: absolute;
-  top: 500px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 40px); /* Changed to responsive width */
-  max-width: 846px; /* Added max-width */
+  width: calc(100% - 40px);
+  max-width: 846px;
   height: 108px;
   padding: 0px 8px;
-  border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 8px;
-  box-shadow: 2px 2px 0px rgba(0,0,0,0.8);
   background-color: #cfcf14;
   color: #000000;
   font-size: 30px;
@@ -113,52 +87,49 @@
   line-height: 39px;
   text-transform: uppercase;
   outline: none;
+  border: none;
 }
-
-/* Removed user-id-display styles */
-
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
+  .end-content-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px; /* Adjust padding-bottom for mobile */
+  }
+
   .end-screen-image {
-    top: 81px;
     width: 301px;
     height: 373px;
-    max-width: 90%; /* Added max-width for safety */
+    max-width: 90%;
+    margin-bottom: 0px;
   }
 
   .show-results-button {
-    top: 454px;
-    width: calc(100% - 40px); /* Changed to responsive width */
-    max-width: 375px; /* Limit max width on mobile */
+    width: calc(100% - 40px);
+    max-width: 375px;
     height: 56px;
     font-size: 16px;
     font-family: 'Roboto';
     font-weight: 600;
     line-height: 29px;
+    border: none;
   }
 
   .email-input {
-    top: 530px;
-    width: calc(100% - 40px); /* Changed to responsive width */
-    max-width: 375px; /* Limit max width on mobile */
+    width: calc(100% - 40px);
+    max-width: 375px;
     height: 56px;
     border-radius: 2px;
     color: #c0c0c0;
     font-size: 14px;
     font-family: 'Roboto Mono';
     line-height: 18px;
-  }
-
-  .instruction-text {
-    top: 590px;
-    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 30px; /* Added spacing below the email input for mobile */
   }
 
   .email-error-message {
-    top: 570px; /* Adjust position for mobile */
     font-size: 12px;
+    margin-top: 5px;
   }
-
-  /* Removed user-id-display styles for mobile */
 }
