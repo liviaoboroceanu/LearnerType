@@ -1,11 +1,9 @@
-/* src/components/Header.css */
-
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px 25px; /* Common desktop padding */
+  padding: 20px 25px;
   box-sizing: border-box;
   position: absolute;
   top: 0;
@@ -19,9 +17,20 @@
   font-size: 24px;
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 
-/* Desktop navigation links (the 'tabs') */
+.header-icon:hover {
+  color: yellow;
+  fill: yellow;
+}
+
+.header-icon:active {
+  color: #eeeeee;
+  transform: scale(0.98);
+  transition: transform 0.1s ease-out;
+}
+
 .nav-links-desktop {
   display: flex;
   gap: 25px;
@@ -32,89 +41,114 @@
   font-size: 16px;
   font-family: 'Open Sans';
   line-height: 19px;
-  /* Added for clickable areas in sidebar */
-  cursor: pointer; 
-  white-space: nowrap; /* Prevent wrapping in sidebar */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s ease-in-out;
+  text-decoration: none;
 }
 
-/* Hamburger Icon - hidden by default on desktop */
+.nav-text:hover {
+  color: yellow;
+}
+
+.nav-text:active {
+  color: #eeeeee;
+  transform: scale(0.98);
+  transition: transform 0.1s ease-out;
+}
+
 .hamburger-icon {
   display: none; 
   cursor: pointer;
 }
 
-/* Sidebar styles - hidden off-screen by default */
+.hamburger-icon:hover {
+  color: yellow;
+}
+
+.hamburger-icon:active {
+  color: #eeeeee;
+  transform: scale(0.98);
+  transition: transform 0.1s ease-out;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
-  right: -300px; /* Start off-screen to the right */
-  width: 250px; /* Width of the sidebar */
-  max-width: 80%; /* Max width relative to viewport */
+  right: -300px;
+  width: 250px;
+  max-width: 80%;
   height: 100%;
-  background-color: #333; /* Dark background for sidebar */
-  z-index: 1001; /* Above other content and overlay */
-  transition: right 0.3s ease-in-out; /* Smooth slide animation */
+  background-color: rgba(20, 20, 20, 1);
+  z-index: 1001;
+  transition: right 0.3s ease-in-out;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px; /* Space between sidebar elements */
+  gap: 20px;
 }
 
 .sidebar.open {
-  right: 0; /* Slide into view */
+  right: 0;
 }
 
 .close-sidebar {
-  align-self: flex-end; /* Position close button at top right */
+  align-self: flex-end;
   background: none;
   border: none;
   color: white;
   font-size: 30px;
   cursor: pointer;
-  padding: 0; /* Remove default button padding */
+  padding: 0;
+}
+
+.close-sidebar:hover {
+  color: yellow;
+}
+
+.close-sidebar:active {
+  color: #eeeeee;
+  transform: scale(0.98);
+  transition: transform 0.1s ease-out;
 }
 
 .sidebar-nav-links {
   display: flex;
-  flex-direction: column; /* Stack tabs vertically within sidebar */
-  gap: 15px; /* Space between links in sidebar */
-  width: 100%; /* Ensure links take full width of sidebar */
-  align-items: flex-start; /* Align tabs to the start of the sidebar */
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: flex-start;
 }
 
-/* Overlay that appears when sidebar is open */
 .sidebar-overlay {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-  z-index: 1000; /* Below sidebar, above page content */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
-
-/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .header-container {
     padding: 20px;
-    /* Keep it as a row for icon and hamburger */
     flex-direction: row; 
-    justify-content: space-between; /* Space out icon and hamburger */
+    justify-content: space-between;
     align-items: center; 
-    position: relative; /* Ensure it stays in flow */
-    display: flex; /* Make sure the header is displayed */
+    position: relative;
+    display: flex;
   }
 
   .nav-links-desktop {
-    display: none; /* Hide the full navigation links on mobile */
+    display: none;
   }
 
   .hamburger-icon {
-    display: flex; /* Show the hamburger icon on mobile */
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 24px;
@@ -124,11 +158,10 @@
   .hamburger-icon .bar {
     width: 100%;
     height: 3px;
-    background-color: white; /* Color of the hamburger lines */
+    background-color: white;
     border-radius: 1px;
   }
 
-  /* Show the overlay when sidebar is open on mobile */
   .sidebar-overlay {
     display: block; 
   }
