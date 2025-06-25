@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   // Define the base URL for your Python backend API
-  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   const QUIZ_RESULTS_ENDPOINT = `${API_BASE_URL}/api/quiz-results`;
 
   const handleStartQuiz = () => {
@@ -52,44 +52,45 @@ function App() {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
+const handleShowResults = async (email) => {
+  setUserEmail(email);
+  setIsLoading(true);
 
-  const handleShowResults = async (email) => {
-    setUserEmail(email);
-    setIsLoading(true);
-
-    const quizDataToSend = {
-      answers: userAnswers,
-      email: email,
-    };
-
-    try {
-      const response = await fetch(QUIZ_RESULTS_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(quizDataToSend),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const backendResult = await response.json();
-
-      setFinalResult(backendResult.learningStyle);
-      setLearningStyleDescription(backendResult.description);
-
-      setQuizStage('results');
-    } catch (error) {
-      console.error("Error processing quiz results with backend:", error);
-      setFinalResult("Error");
-      setLearningStyleDescription("We encountered an issue processing your results. Please try again later.");
-      setQuizStage('results');
-    } finally {
-      setIsLoading(false);
-    }
+  const quizDataToSend = {
+    answers: userAnswers,
+    email: email,
   };
+
+  try {
+    console.log("Sending quiz data to backend:", quizDataToSend);
+    const response = await fetch(QUIZ_RESULTS_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(quizDataToSend),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const backendResult = await response.json();
+
+    
+    setFinalResult("EmailSent");
+    setLearningStyleDescription(backendResult.message || "Check your email for your personalized learning style results!");
+
+    setQuizStage('results');
+  } catch (error) {
+    console.error("Error processing quiz results with backend:", error);
+    setFinalResult("Error");
+    setLearningStyleDescription("We encountered an issue processing your results. Please try again later.");
+    setQuizStage('results');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const handleRestartQuiz = () => {
     setQuizStage('start');
@@ -106,15 +107,16 @@ function App() {
   const getQuestionImageUrl = (question) => {
     return isMobile ? question.mobileImageUrl : question.laptopImageUrl;
   };
-
-  const getResultImageUrl = (result) => {
-    if (Array.isArray(result) && result.length > 1) {
-      return isMobile ? styleDescriptions.Mixed.mobileImageUrl : styleDescriptions.Mixed.laptopImageUrl;
-    } else if (result && styleDescriptions[result]) {
-      return isMobile ? styleDescriptions[result].mobileImageUrl : styleDescriptions[result].laptopImageUrl;
-    }
-    return '';
-  };
+const getResultImageUrl = (result) => {
+  if (result === "EmailSent") {
+    // You can create a special "email sent" image or use a default success image
+    return isMobile ? '/images/email-sent-mobile.jpg' : '/images/email-sent-desktop.jpg';
+  } else if (Array.isArray(result) && result.length > 1) {
+    return isMobile ? styleDescriptions.Mixed.mobileImageUrl : styleDescriptions.Mixed.laptopImageUrl;
+  } else if (result && styleDescriptions[result]) {
+    return isMobile ? styleDescriptions[result].mobileImageUrl : styleDescriptions[result].laptopImageUrl;
+  }
+  return '';}
 
   const currentResultImageUrl = getResultImageUrl(finalResult);
   const currentQuestionImageUrl = currentQuestion ? getQuestionImageUrl(currentQuestion) : ''; // Safely get image for current question
