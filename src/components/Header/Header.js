@@ -18,12 +18,12 @@ const Header = () => {
       </svg>
 
       {/* Desktop Navigation Links - hidden on mobile via CSS */}
-      <div className="nav-links-desktop">
+      {/* <div className="nav-links-desktop">
         <div className="nav-text">Home</div>
         <div className="nav-text">Features</div>
         <div className="nav-text">About Us</div>
         <div className="nav-text">Contact</div>
-      </div>
+      </div> */}
 
       {/* Hamburger Icon for Mobile - shown only on mobile via CSS */}
       <div className="hamburger-icon" onClick={toggleSidebar}>
