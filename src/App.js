@@ -32,6 +32,7 @@ function App() {
   // Define the base URL for your Python backend API
 const API_BASE_URL = process.env.REACT_APP_BACK_API_URL;
 const QUIZ_RESULTS_ENDPOINT = `${API_BASE_URL}/api/quiz-results`;
+//new image
 
   const handleStartQuiz = () => {
     setQuizStage('question');
