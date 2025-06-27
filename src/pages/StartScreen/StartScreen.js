@@ -22,7 +22,7 @@ const StartScreen = ({ onStartQuiz, isMobile }) => {
       <Header />
 
       <div className="start-screen-content">
-        <div className="image-button-group"> {/* Add this new div */}
+        <div className="image-button-group"> 
           <div style={imageStyles} className="start-screen-image"></div>
           <button style={buttonStyles} onClick={onStartQuiz} className="start-screen-button">
             Start Quiz

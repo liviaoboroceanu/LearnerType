@@ -50,9 +50,6 @@ const EndScreen = ({ onShowResults, isLoading, isMobile }) => {
         {showEmailError && (
           <p className="email-error-message">Please enter your email address to see your results.</p>
         )}
-
-        {/* This entire <p> element is removed */}
-        {/* <p className="instruction-text">Enter your email to uncover your results!</p> */}
       </div>
     </div>
   );
