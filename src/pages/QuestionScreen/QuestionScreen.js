@@ -38,7 +38,6 @@ const QuestionScreen = ({ question, currentQuestionIndex, totalQuestions, onAnsw
         <div className="question-screen-image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
         <div className="card-dark-overlay"></div>
 
-        {/* NEW CONTAINER FOR QUESTION AND OPTIONS: `question-and-options-container` */}
         <div className="question-and-options-container">
           <h2 className="question-text">
             Question {currentQuestionIndex + 1} of {totalQuestions}: {question.question}
@@ -58,7 +57,7 @@ const QuestionScreen = ({ question, currentQuestionIndex, totalQuestions, onAnsw
               {optionKey}. {question.options[optionKey].text}
             </button>
           ))}
-        </div> {/* End of `question-and-options-container` */}
+        </div>
       </div>
     </div>
   );
